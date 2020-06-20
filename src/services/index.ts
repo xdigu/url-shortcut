@@ -1,8 +1,8 @@
-import { generate } from 'shortid'
-import { Model, Document } from 'mongoose'
-import { isUrl, responseData, responseMessage, parseUrl } from './utils'
-import { StoredUrlSchema } from '../models'
-import { STATUS_CODE } from '../constants'
+import { Document } from 'mongoose';
+import { generate } from 'shortid';
+import { isUrl, responseData, responseMessage, parseUrl } from '@services/utils';
+import { StoredUrlSchema } from '@models/index';
+import { STATUS_CODE } from '@constants/index';
 
 interface Url extends Document {
   _id: string;
@@ -10,7 +10,6 @@ interface Url extends Document {
 }
 
 const { HOST, PORT } = process.env;
-
 
 class Urls {
   async storeUrl(url: string) {
@@ -26,10 +25,10 @@ class Urls {
     const url_to_store = {
       _id: url_id,
       url: pased_url,
-    }
+    };
 
     const stored_url = await StoredUrlSchema.create(url_to_store)
-      .catch(() => { throw new Error('Error to store url.') });
+      .catch(() => { throw new Error('Error to store url.'); });
 
     await stored_url.save();
 
@@ -48,10 +47,11 @@ class Urls {
 
   async getUrl(urlHash: string) {
     const url: Url = await StoredUrlSchema.findById(urlHash)
-      .catch(() => { throw new Error('Error on get url.') });
+      .catch(() => { throw new Error('Error on get url.'); });
 
-    if (!url)
+    if (!url) {
       return responseMessage(STATUS_CODE.not_found, 'Url was not found.');
+    }
 
     return responseData(STATUS_CODE.success, url.url);
   }

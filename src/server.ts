@@ -1,11 +1,12 @@
-import 'express-async-errors'
-import './utils/dotEnv'
-import express, { Request, Response, NextFunction } from 'express'
-import helmet from 'helmet'
-import compression from 'compression'
+import 'express-async-errors';
+import '@utils/dotEnv';
 
-import controllers from './controllers'
-import { connection } from './database/config'
+import express, { Request, Response, NextFunction } from 'express';
+import helmet from 'helmet';
+import compression from 'compression';
+
+import controllers from '@controllers/index';
+import { connection } from '@database/config';
 
 interface Server {
   express: express.Application;

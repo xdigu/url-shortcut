@@ -1,5 +1,5 @@
-import { Router, Request, Response } from 'express'
-import { UrlsService } from '../services'
+import { Router, Request, Response } from 'express';
+import { UrlsService } from '@services/index';
 
 const controllers = Router();
 
@@ -11,7 +11,7 @@ controllers.post('/urls', async (req: Request, res: Response) => {
   const status_code = shortcuted_url.status_code;
 
   return res.status(status_code).json({
-    success: status_code == 200 ? true : false,
+    success: status_code === 200,
     data: shortcuted_url.data,
   });
 });
@@ -19,10 +19,10 @@ controllers.post('/urls', async (req: Request, res: Response) => {
 controllers.get('/urls', async (req: Request, res: Response) => {
   const urls = await UrlsService.index();
 
-  const status_code = urls.status_code
+  const status_code = urls.status_code;
 
   return res.status(status_code).json({
-    success: status_code == 200 ? true : false,
+    success: status_code === 200,
     data: urls.data,
   });
 });
@@ -34,9 +34,9 @@ controllers.get('/:url', async (req: Request, res: Response) => {
 
   const status_code = urls.status_code;
 
-  if (status_code === 200)
+  if (status_code === 200) {
     return res.redirect(urls.data);
-
+  }
 
   return res.status(status_code).json({
     success: false,

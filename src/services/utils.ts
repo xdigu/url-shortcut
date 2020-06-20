@@ -6,28 +6,27 @@ export function isUrl(url: string) {
 }
 
 export function parseUrl(url: string) {
-  const parsed_url = url.match(/^[a-zA-Z]+:\/\//) ? url : 'http://' + url
+  const parsed_url = url.match(/^[a-zA-Z]+:\/\//) ? url : 'http://' + url;
 
-  return parsed_url
+  return parsed_url;
 }
 
 export function responseMessage(status_code: number, message: string) {
   const response = {
     status_code,
     data: {
-      message
+      message,
     },
-  }
+  };
 
   return response;
 }
-
 
 export function responseData(status_code: number, data: any) {
   const response = {
     status_code,
     data: data,
-  }
+  };
 
   return response;
 }
