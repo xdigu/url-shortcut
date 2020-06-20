@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express'
-import { UrlsService } from '../services'
+import { UrlsService } from '@services/index'
 
 const controllers = Router();
 

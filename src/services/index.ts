@@ -1,8 +1,8 @@
-import { generate } from 'shortid'
 import { Model, Document } from 'mongoose'
-import { isUrl, responseData, responseMessage, parseUrl } from './utils'
-import { StoredUrlSchema } from '../models'
-import { STATUS_CODE } from '../constants'
+import { generate } from 'shortid'
+import { isUrl, responseData, responseMessage, parseUrl } from '@services/utils'
+import { StoredUrlSchema } from '@models/index'
+import { STATUS_CODE } from '@constants/index'
 
 interface Url extends Document {
   _id: string;

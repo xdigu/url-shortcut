@@ -5,7 +5,7 @@
   "main": "app.ts",
   "scripts": {
     "start": "npx ts-node app.ts",
-    "dev": "NODE_ENV=dev npx ts-node-dev app.ts",
+    "dev": "NODE_ENV=DEV ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --ignore-watch node_modules --no-notify app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "@types/shortid": "^0.0.29",
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.49",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.5"
   }
 }
