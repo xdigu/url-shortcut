@@ -5,9 +5,9 @@ function getStatusCode() {
     bad_resquest: 400,
     not_found: 404,
     server_error: 500,
-  }
+  };
 
-  return STATUS_CODE
+  return STATUS_CODE;
 }
 
 export const STATUS_CODE = getStatusCode();
